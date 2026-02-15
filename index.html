@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" ng-app="siriusApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sirius Steel Services | Angular UI Upgrade</title>
+    <meta
+      name="description"
+      content="Angular-powered UI upgrade for Sirius Steel Services with dynamic sections, slider, and modern interaction design."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body ng-controller="MainController as vm">
+    <header class="top-header" id="home">
+      <div class="container top-grid">
+        <div class="brand-panel">
+          <div class="logo-wrap" aria-label="Sirius Steel Services logo">
+            <svg viewBox="0 0 120 120" role="img" aria-hidden="true">
+              <rect x="0" y="0" width="120" height="120" fill="#1f2430"></rect>
+              <path
+                d="M18 96 L102 96 L92 80 L35 80 L42 66 L83 66 L94 78 L107 78 L84 40 L68 40 L58 25 L48 25 L20 76 L34 76 L45 56 L58 36 L67 51 L78 51 L63 24 L52 24 L24 78 L16 96 Z"
+                fill="#f06a2f"
+              ></path>
+            </svg>
+          </div>
+          <div>
+            <p class="brand-name">Sirius</p>
+            <p class="brand-name">Steel</p>
+            <p class="brand-name">Services</p>
+          </div>
+        </div>
+
+        <div class="contact-cluster">
+          <article class="contact-box" ng-repeat="office in vm.offices track by office.name">
+            <h3>{{ office.name }}</h3>
+            <p ng-bind-html="office.address"></p>
+          </article>
+          <article class="contact-box strong">
+            <h3>Call Us</h3>
+            <p>{{ vm.phone1 }}<br />{{ vm.phone2 }}</p>
+          </article>
+          <article class="contact-box strong">
+            <h3>Email</h3>
+            <p>{{ vm.email1 }}<br />{{ vm.email2 }}</p>
+          </article>
+        </div>
+      </div>
+    </header>
+
+    <nav class="nav-wrap">
+      <div class="container nav-inner">
+        <button class="menu-toggle" ng-click="vm.toggleMenu()" aria-label="Toggle menu">☰</button>
+        <div class="site-nav" ng-class="{ open: vm.menuOpen }">
+          <a href="#home">Home</a>
+          <a href="#about">About Us</a>
+          <a href="#services">Our Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero" ng-style="{'background-image': vm.currentSlide.bg}">
+        <button class="slide-arrow" ng-click="vm.prevSlide()">←</button>
+        <div class="hero-copy">
+          <p class="eyebrow">Structural Steel Specialists</p>
+          <h1>{{ vm.currentSlide.title }}</h1>
+          <p>{{ vm.currentSlide.text }}</p>
+          <div class="hero-stats">
+            <div><strong>{{ vm.stats.years }}+</strong><span>Years</span></div>
+            <div><strong>{{ vm.stats.projects }}+</strong><span>Projects</span></div>
+            <div><strong>{{ vm.stats.retention }}%</strong><span>Retention</span></div>
+          </div>
+        </div>
+        <button class="slide-arrow" ng-click="vm.nextSlide()">→</button>
+      </section>
+
+      <section class="what-we-do" id="about">
+        <div class="container narrow">
+          <p class="eyebrow center">What We Do</p>
+          <h2>
+            <strong>Sirius</strong> is a comprehensive structural steel detailing service company in
+            USA and Canada for diverse buildings and structures.
+          </h2>
+          <p>
+            We leverage SDS2 and Tekla for high-accuracy shop drawings, connection designs, and
+            BIM-ready deliverables.
+          </p>
+        </div>
+      </section>
+
+      <section class="values" id="services">
+        <div class="container values-grid">
+          <article class="value-card" ng-repeat="item in vm.values track by item.id">
+            <span class="num">{{ item.id }}</span>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.body }}</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="why-us" id="projects">
+        <div class="why-media"></div>
+        <div class="why-content">
+          <p class="eyebrow">Why Choose Us</p>
+          <h2>More than <strong>a Decade of Experience</strong> in industry</h2>
+          <p>
+            Timely bids, accurate quotes, and practical detailing support that minimizes site
+            rework and accelerates project delivery.
+          </p>
+          <ul>
+            <li ng-repeat="point in vm.whyPoints track by point">{{ point }}</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="quote" id="contact">
+        <div class="quote-media"></div>
+        <div class="quote-panel">
+          <p class="eyebrow">Get a Quote</p>
+          <h2>Request A <strong>Quote</strong></h2>
+          <form class="quote-form" ng-submit="vm.submitForm($event)">
+            <label> Your name* <input type="text" required /> </label>
+            <label> Phone number <input type="text" /> </label>
+            <label> Your email* <input type="email" required /> </label>
+            <label> Subject <input type="text" /> </label>
+            <label class="full"> Message* <textarea rows="4" required></textarea> </label>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="logo-wrap small">
+            <svg viewBox="0 0 120 120" role="img" aria-hidden="true">
+              <rect x="0" y="0" width="120" height="120" fill="#1f2430"></rect>
+              <path
+                d="M18 96 L102 96 L92 80 L35 80 L42 66 L83 66 L94 78 L107 78 L84 40 L68 40 L58 25 L48 25 L20 76 L34 76 L45 56 L58 36 L67 51 L78 51 L63 24 L52 24 L24 78 L16 96 Z"
+                fill="#f06a2f"
+              ></path>
+            </svg>
+          </div>
+          <p class="footer-brand">SIRIUS<br />STEEL SERVICES</p>
+        </div>
+        <div>
+          <h4>Our Company</h4>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+        </div>
+        <div>
+          <h4>Our Services</h4>
+          <a href="#services">Industrial</a>
+          <a href="#services">Commercial</a>
+          <a href="#services">Residential</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="#contact">Help Center</a>
+          <a href="#contact">Support</a>
+          <a href="#contact">Our Partners</a>
+        </div>
+      </div>
+      <p class="copyright">Copyright © {{ vm.year }} All rights reserved.</p>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-sanitize.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
