@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sirius Steel Services | UI Upgrade</title>
+    <meta
+      name="description"
+      content="UI upgrade for Sirius Steel Services with dynamic sections, slider, and complete business content."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header class="top-header" id="home">
+      <div class="container top-grid">
+        <div class="brand-panel">
+          <div class="logo-wrap" aria-label="Sirius Steel Services logo">
+            <svg viewBox="0 0 120 120" role="img" aria-hidden="true">
+              <rect x="0" y="0" width="120" height="120" fill="#1f2430"></rect>
+              <path
+                d="M18 96 L102 96 L92 80 L35 80 L42 66 L83 66 L94 78 L107 78 L84 40 L68 40 L58 25 L48 25 L20 76 L34 76 L45 56 L58 36 L67 51 L78 51 L63 24 L52 24 L24 78 L16 96 Z"
+                fill="#f06a2f"
+              ></path>
+            </svg>
+          </div>
+          <div>
+            <p class="brand-name">Sirius</p>
+            <p class="brand-name">Steel</p>
+            <p class="brand-name">Services</p>
+          </div>
+        </div>
+
+        <div class="contact-cluster" id="officeList"></div>
+      </div>
+    </header>
+
+    <nav class="nav-wrap">
+      <div class="container nav-inner">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+        <div class="site-nav" id="siteNav">
+          <a href="#home">Home</a>
+          <a href="#about">About Us</a>
+          <a href="#services">Our Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero" id="heroSection">
+        <button class="slide-arrow" id="prevSlide">←</button>
+        <div class="hero-copy">
+          <p class="eyebrow">Structural Steel Specialists</p>
+          <h1 id="heroTitle"></h1>
+          <p id="heroText"></p>
+          <div class="hero-stats" id="heroStats"></div>
+        </div>
+        <button class="slide-arrow" id="nextSlide">→</button>
+      </section>
+
+      <section class="what-we-do" id="about">
+        <div class="container narrow">
+          <p class="eyebrow center">What We Do</p>
+          <h2>
+            <strong>Sirius</strong> is a comprehensive structural steel detailing service company in
+            USA and Canada for diverse buildings and structures.
+          </h2>
+          <p>
+            We expertise in leveraging 3D software like SDS2 and Tekla that positions us to deliver
+            precise structural steel drawings at competitive prices for diverse buildings and
+            structures across USA and Canada.
+          </p>
+        </div>
+      </section>
+
+      <section class="values" id="services">
+        <div class="container values-grid" id="valuesGrid"></div>
+      </section>
+
+      <section class="projects" id="portfolio">
+        <div class="container">
+          <p class="eyebrow center">Selected Work</p>
+          <h2 class="section-title">Trusted Across Commercial & Industrial Sectors</h2>
+          <div class="projects-grid" id="projectsGrid"></div>
+        </div>
+      </section>
+
+      <section class="why-us" id="projects">
+        <div class="why-media"></div>
+        <div class="why-content">
+          <p class="eyebrow">Why Choose Us</p>
+          <h2>More than <strong>a Decade of Experience</strong> in industry</h2>
+          <p>
+            Timely bids, accurate quotes, and practical detailing support that minimizes site rework
+            and accelerates project delivery.
+          </p>
+          <ul id="whyPoints"></ul>
+        </div>
+      </section>
+
+      <section class="quote" id="contact">
+        <div class="quote-media"></div>
+        <div class="quote-panel">
+          <p class="eyebrow">Get a Quote</p>
+          <h2>Request A <strong>Quote</strong></h2>
+          <form class="quote-form" id="quoteForm">
+            <label> Your name* <input type="text" required /> </label>
+            <label> Phone number <input type="text" /> </label>
+            <label> Your email* <input type="email" required /> </label>
+            <label> Subject <input type="text" /> </label>
+            <label class="full"> Message* <textarea rows="4" required></textarea> </label>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="logo-wrap small">
+            <svg viewBox="0 0 120 120" role="img" aria-hidden="true">
+              <rect x="0" y="0" width="120" height="120" fill="#1f2430"></rect>
+              <path
+                d="M18 96 L102 96 L92 80 L35 80 L42 66 L83 66 L94 78 L107 78 L84 40 L68 40 L58 25 L48 25 L20 76 L34 76 L45 56 L58 36 L67 51 L78 51 L63 24 L52 24 L24 78 L16 96 Z"
+                fill="#f06a2f"
+              ></path>
+            </svg>
+          </div>
+          <p class="footer-brand">SIRIUS<br />STEEL SERVICES</p>
+        </div>
+        <div>
+          <h4>Our Company</h4>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+        </div>
+        <div>
+          <h4>Our Services</h4>
+          <a href="#services">Industrial</a>
+          <a href="#services">Commercial</a>
+          <a href="#services">Residential</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="#contact">Help Center</a>
+          <a href="#contact">Support</a>
+          <a href="#contact">Our Partners</a>
+        </div>
+      </div>
+      <p class="copyright">Copyright © <span id="year"></span> All rights reserved.</p>
+    </footer>
+  </body>
+</html>
