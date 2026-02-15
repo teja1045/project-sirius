@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" ng-app="siriusApp">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sirius Steel Services | Advanced Structural Steel Detailing</title>
+    <title>Sirius Steel Services | Angular UI Upgrade</title>
     <meta
       name="description"
-      content="Sirius Steel Services delivers structural steel detailing, connection design, BIM coordination, and fabrication-ready drawings across USA and Canada."
+      content="Angular-powered UI upgrade for Sirius Steel Services with dynamic sections, slider, and modern interaction design."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,15 +15,20 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script defer src="script.js"></script>
   </head>
-  <body>
-    <div class="noise" aria-hidden="true"></div>
-
+  <body ng-controller="MainController as vm">
     <header class="top-header" id="home">
       <div class="container top-grid">
         <div class="brand-panel">
-          <div class="brand-mark" aria-hidden="true">S</div>
+          <div class="logo-wrap" aria-label="Sirius Steel Services logo">
+            <svg viewBox="0 0 120 120" role="img" aria-hidden="true">
+              <rect x="0" y="0" width="120" height="120" fill="#1f2430"></rect>
+              <path
+                d="M18 96 L102 96 L92 80 L35 80 L42 66 L83 66 L94 78 L107 78 L84 40 L68 40 L58 25 L48 25 L20 76 L34 76 L45 56 L58 36 L67 51 L78 51 L63 24 L52 24 L24 78 L16 96 Z"
+                fill="#f06a2f"
+              ></path>
+            </svg>
+          </div>
           <div>
             <p class="brand-name">Sirius</p>
             <p class="brand-name">Steel</p>
@@ -32,104 +37,96 @@
         </div>
 
         <div class="contact-cluster">
-          <article class="contact-box reveal">
-            <h3>Ohio</h3>
-            <p>1985 W Henderson Road #2211,<br />Columbus, OH 43220</p>
+          <article class="contact-box" ng-repeat="office in vm.offices track by office.name">
+            <h3>{{ office.name }}</h3>
+            <p ng-bind-html="office.address"></p>
           </article>
-          <article class="contact-box reveal">
-            <h3>Florida</h3>
-            <p>8270, Woodland Center Blvd<br />Tampa, FL 33614</p>
-          </article>
-          <article class="contact-box reveal">
-            <h3>Canada</h3>
-            <p>2482 Yonge St #13 Toronto, ON<br />M4P 2H5, Canada</p>
-          </article>
-          <article class="contact-box strong reveal">
+          <article class="contact-box strong">
             <h3>Call Us</h3>
-            <p>+1 937-797-3975<br />+1 937-797-3904</p>
+            <p>{{ vm.phone1 }}<br />{{ vm.phone2 }}</p>
           </article>
-          <article class="contact-box strong reveal">
+          <article class="contact-box strong">
             <h3>Email</h3>
-            <p>info@siriussteelservices.com<br />mark@siriussteelservices.com</p>
+            <p>{{ vm.email1 }}<br />{{ vm.email2 }}</p>
           </article>
         </div>
       </div>
     </header>
 
-    <div class="nav-wrap">
+    <nav class="nav-wrap">
       <div class="container nav-inner">
-        <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">☰</button>
-        <nav class="site-nav" id="site-nav" aria-label="primary">
+        <button class="menu-toggle" ng-click="vm.toggleMenu()" aria-label="Toggle menu">☰</button>
+        <div class="site-nav" ng-class="{ open: vm.menuOpen }">
           <a href="#home">Home</a>
           <a href="#about">About Us</a>
           <a href="#services">Our Services</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
-        </nav>
+        </div>
       </div>
-    </div>
+    </nav>
 
     <main>
-      <section class="hero" aria-label="hero slider">
-        <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
-        <button class="slide-arrow" id="prevSlide" aria-label="Previous slide">←</button>
-        <div class="hero-copy reveal">
+      <section class="hero" ng-style="{'background-image': vm.currentSlide.bg}">
+        <button class="slide-arrow" ng-click="vm.prevSlide()">←</button>
+        <div class="hero-copy">
           <p class="eyebrow">Structural Steel Specialists</p>
-          <h1 id="heroTitle">Experts and High Quality Works</h1>
-          <p id="heroText">
-            Precision detailing and steel design solutions for commercial and industrial projects.
-          </p>
+          <h1>{{ vm.currentSlide.title }}</h1>
+          <p>{{ vm.currentSlide.text }}</p>
           <div class="hero-stats">
-            <div><strong class="counter" data-target="17">0</strong><span>Years Experience</span></div>
-            <div><strong class="counter" data-target="1200">0</strong><span>Projects Delivered</span></div>
-            <div><strong class="counter" data-target="99">0</strong><span>Client Retention %</span></div>
+            <div><strong>{{ vm.stats.years }}+</strong><span>Years</span></div>
+            <div><strong>{{ vm.stats.projects }}+</strong><span>Projects</span></div>
+            <div><strong>{{ vm.stats.retention }}%</strong><span>Retention</span></div>
           </div>
         </div>
-        <button class="slide-arrow" id="nextSlide" aria-label="Next slide">→</button>
+        <button class="slide-arrow" ng-click="vm.nextSlide()">→</button>
       </section>
 
       <section class="what-we-do" id="about">
-        <div class="container narrow reveal">
+        <div class="container narrow">
           <p class="eyebrow center">What We Do</p>
           <h2>
-            <strong>Sirius</strong> is a comprehensive structural steel detailing service company in USA
-            and Canada for diverse buildings and structures.
+            <strong>Sirius</strong> is a comprehensive structural steel detailing service company in
+            USA and Canada for diverse buildings and structures.
           </h2>
           <p>
-            We leverage 3D software like SDS2 and Tekla to deliver precise structural steel
-            drawings, connection design packages, and coordinated fabrication deliverables at
-            competitive pricing.
+            We leverage SDS2 and Tekla for high-accuracy shop drawings, connection designs, and
+            BIM-ready deliverables.
           </p>
         </div>
       </section>
 
       <section class="values" id="services">
-        <div class="container values-grid" id="valueCards"></div>
+        <div class="container values-grid">
+          <article class="value-card" ng-repeat="item in vm.values track by item.id">
+            <span class="num">{{ item.id }}</span>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.body }}</p>
+          </article>
+        </div>
       </section>
 
       <section class="why-us" id="projects">
-        <div class="why-media" role="img" aria-label="blueprint planning"></div>
-        <div class="why-content reveal">
+        <div class="why-media"></div>
+        <div class="why-content">
           <p class="eyebrow">Why Choose Us</p>
-          <h2>More than <strong>Decade of Experience</strong> in industry</h2>
+          <h2>More than <strong>a Decade of Experience</strong> in industry</h2>
           <p>
-            Timely bids, accurate quotes, and precise timelines. We help clients save time and
-            money while maintaining top-quality outcomes.
+            Timely bids, accurate quotes, and practical detailing support that minimizes site
+            rework and accelerates project delivery.
           </p>
           <ul>
-            <li>Expert in Structural and Misc. Steel</li>
-            <li>Connection Design</li>
-            <li>PEMB</li>
+            <li ng-repeat="point in vm.whyPoints track by point">{{ point }}</li>
           </ul>
         </div>
       </section>
 
       <section class="quote" id="contact">
-        <div class="quote-media" role="img" aria-label="construction engineer"></div>
-        <div class="quote-panel reveal">
+        <div class="quote-media"></div>
+        <div class="quote-panel">
           <p class="eyebrow">Get a Quote</p>
           <h2>Request A <strong>Quote</strong></h2>
-          <form class="quote-form">
+          <form class="quote-form" ng-submit="vm.submitForm($event)">
             <label> Your name* <input type="text" required /> </label>
             <label> Phone number <input type="text" /> </label>
             <label> Your email* <input type="email" required /> </label>
@@ -144,7 +141,15 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <div>
-          <div class="brand-mark large">S</div>
+          <div class="logo-wrap small">
+            <svg viewBox="0 0 120 120" role="img" aria-hidden="true">
+              <rect x="0" y="0" width="120" height="120" fill="#1f2430"></rect>
+              <path
+                d="M18 96 L102 96 L92 80 L35 80 L42 66 L83 66 L94 78 L107 78 L84 40 L68 40 L58 25 L48 25 L20 76 L34 76 L45 56 L58 36 L67 51 L78 51 L63 24 L52 24 L24 78 L16 96 Z"
+                fill="#f06a2f"
+              ></path>
+            </svg>
+          </div>
           <p class="footer-brand">SIRIUS<br />STEEL SERVICES</p>
         </div>
         <div>
@@ -166,7 +171,11 @@
           <a href="#contact">Our Partners</a>
         </div>
       </div>
-      <p class="copyright">Copyright © <span id="year"></span> All rights reserved.</p>
+      <p class="copyright">Copyright © {{ vm.year }} All rights reserved.</p>
     </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-sanitize.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
