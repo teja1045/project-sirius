@@ -90,8 +90,9 @@
             USA and Canada for diverse buildings and structures.
           </h2>
           <p>
-            We leverage SDS2 and Tekla for high-accuracy shop drawings, connection designs, and
-            BIM-ready deliverables.
+            We expertise in leveraging 3D software like SDS2 and Tekla that positions us to deliver
+            precise structural steel drawings at competitive prices for diverse buildings and
+            structures across USA and Canada.
           </p>
         </div>
       </section>
@@ -103,6 +104,19 @@
             <h3>{{ item.title }}</h3>
             <p>{{ item.body }}</p>
           </article>
+        </div>
+      </section>
+
+      <section class="projects" id="portfolio">
+        <div class="container">
+          <p class="eyebrow center">Selected Work</p>
+          <h2 class="section-title">Trusted Across Commercial & Industrial Sectors</h2>
+          <div class="projects-grid">
+            <article class="project-card" ng-repeat="project in vm.projects track by project.name">
+              <h3>{{ project.name }}</h3>
+              <p>{{ project.desc }}</p>
+            </article>
+          </div>
         </div>
       </section>
 

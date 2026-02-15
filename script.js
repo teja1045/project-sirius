@@ -29,17 +29,17 @@
       vm.slides = [
         {
           title: 'Experts and High Quality Works',
-          text: 'Precision detailing and steel design solutions for commercial and industrial projects.',
+          text: 'Comprehensive structural steel detailing, accurate connection design, and coordinated fabrication packages for complex projects.',
           bg: 'linear-gradient(125deg, rgba(26,52,82,.78), rgba(38,121,143,.75)), linear-gradient(120deg,#2b8ea1,#5ac2c6)'
         },
         {
           title: 'Connection Design that Reduces Rework',
-          text: 'Smart engineering decisions that help teams avoid conflicts before fabrication starts.',
+          text: 'We leverage SDS2 and Tekla workflows to detect clashes early and keep erection teams moving in the field.',
           bg: 'linear-gradient(125deg, rgba(36,47,84,.78), rgba(58,93,158,.75)), linear-gradient(120deg,#2d4f90,#4f7fcb)'
         },
         {
           title: 'Fast Turnaround. Reliable Output.',
-          text: 'From bid support to final issue drawings, we keep deadlines predictable and transparent.',
+          text: 'From bid support to final issue drawings, we provide clear communication, timely submissions, and dependable quality.',
           bg: 'linear-gradient(125deg, rgba(62,50,42,.72), rgba(129,89,60,.72)), linear-gradient(120deg,#6a5f4f,#a48358)'
         }
       ];
@@ -49,22 +49,37 @@
         {
           id: '01',
           title: 'Customer Driven',
-          body: 'We partner closely with clients and provide transparent progress with accountable communication.'
+          body: 'At Sirius, we work with clients as partners by ensuring full-time support, progression reporting, and reliable quotations.'
         },
         {
           id: '02',
           title: 'Professional Team',
-          body: 'Experienced detailers and engineers deliver production-ready packages with practical coordination.'
+          body: 'Our extremely talented team has deep software and field experience, delivering quality-driven and practical detailing solutions.'
         },
         {
           id: '03',
           title: 'Integrity',
-          body: 'We apply licensed processes, ethical standards, and strict quality checks across every milestone.'
+          body: 'We use sophisticated tools and disciplined QA workflows, combined with ethical business practices for sustainable growth.'
         },
         {
           id: '04',
           title: 'Flexibility',
-          body: 'Timezone-friendly collaboration and scalable capacity to support varying project demands.'
+          body: 'Our project management model helps distribute workloads and respond quickly to changing schedules across time zones.'
+        }
+      ];
+
+      vm.projects = [
+        {
+          name: 'North River Manufacturing Plant',
+          desc: 'Heavy industrial framing with crane support steel and coordinated erection sequencing.'
+        },
+        {
+          name: 'Harbor Point Distribution Hub',
+          desc: 'Fast-track logistics center detailing package delivered ahead of construction schedule.'
+        },
+        {
+          name: 'Metro Medical Tower Expansion',
+          desc: 'Complex retrofit steel package with phased release strategy for an active site environment.'
         }
       ];
 
